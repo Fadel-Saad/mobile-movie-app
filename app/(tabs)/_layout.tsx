@@ -8,7 +8,7 @@ function TabIcon({ focused, icon, title }: any) {
     return (
       <ImageBackground
         source={images.highlight}
-        className="flex flex-row w-full flex-1 justify-center items-center min-w-[112px] min-h-[52px] mt-4 rounded-full overflow-hidden"
+        className="flex flex-row w-full flex-1 justify-center items-center min-w-[112px] min-h-14 mt-4 rounded-full overflow-hidden"
       >
         <Image source={icon} tintColor="#151312" className="size-5" />
         <Text className="text-secondary text-base font-semibold ml-2">{title}</Text>
@@ -44,6 +44,9 @@ export default function _layout() {
           height: 52,
           position: "absolute",
           overflow: "hidden",
+          borderWidth: 1,
+          borderTopWidth: 0,
+          borderColor: "#0F0D23",
         },
       }}
     >
