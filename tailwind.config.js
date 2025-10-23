@@ -19,6 +19,7 @@ module.exports = {
         ratingBox: "#221F3D",
         searchBar: "#0F0D23",
         text: "#9CA4AB",
+        accent: "#AB8BFF",
         darkAccent: "#AB8BFF",
         accentText: "#A8B5DB",
         secondaryText: "#D6C7FF",
