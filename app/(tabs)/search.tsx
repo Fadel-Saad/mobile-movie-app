@@ -3,6 +3,7 @@ import SearchBar from "@/components/SearchBar";
 import { icons } from "@/constants/icons";
 import { images } from "@/constants/images";
 import { fetchMovies } from "@/services/api";
+import { updateSearchCount } from "@/services/appwrite";
 import useFetch from "@/services/useFetch";
 import React, { useEffect, useState } from "react";
 import { ActivityIndicator, FlatList, Image, Text, View } from "react-native";
@@ -30,7 +31,20 @@ export default function Search() {
 
     // clean up fn to clear the timeouts before running the effect again or when mounting/unmounting
     return () => clearTimeout(timeoutId);
-  }, [loadMovies, reset, searchQuery]);
+  }, [searchQuery]);
+
+  //  update the search records after loading the movies
+  //  we set this in another useEffect since it will create a race condition
+  //  when used after loadMovies since the movies will be scheduled to update after re-render and the updateSearchCount will get the old value
+  useEffect(() => {
+    async function func() {
+      if (movies?.length > 0 && movies?.[0]) {
+        await updateSearchCount(searchQuery, movies[0]);
+      }
+    }
+
+    func();
+  }, [movies]);
 
   return (
     <View className="flex-1 bg-primary">

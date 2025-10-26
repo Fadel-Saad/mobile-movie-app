@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 export default function useFetch<T>(fetchFunction: () => Promise<T>, autoFetch = true) {
   const [data, setData] = useState<T | null>(null);
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState<T | null>(null);
+  const [error, setError] = useState<Error | null>(null);
 
   async function fetchData() {
     try {
