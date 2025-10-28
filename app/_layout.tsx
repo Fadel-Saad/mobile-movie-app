@@ -4,11 +4,13 @@ import "./globals.css";
 
 export default function RootLayout() {
   return (
-    <Stack>
+    <>
       <StatusBar hidden={true} />
-      {/* Hide header in main pages */}
-      <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-      <Stack.Screen name="movies/[id]" options={{ headerShown: false }} />
-    </Stack>
+      <Stack>
+        {/* Hide header in main pages */}
+        <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+        <Stack.Screen name="movies/[id]" options={{ headerShown: false }} />
+      </Stack>
+    </>
   );
 }
